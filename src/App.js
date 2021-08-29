@@ -11,7 +11,8 @@ import Users from './components/Users'
 
 import './App.css';
 
-const harryProfile = "https://getsecretsfunc.azurewebsites.net/api/profile/1"
+let harryProfile = "https://getsecretsfunc.azurewebsites.net/api/profile/1"
+harryProfile = "/api/profile/1"
 
 function App() {
   return (
