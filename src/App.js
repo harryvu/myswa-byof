@@ -1,6 +1,5 @@
 import React from "react";
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
-import { loginRequest, msalConfig } from "./authConfig"
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from "@azure/msal-react";
 import {
   BrowserRouter as Router,
   Switch,
