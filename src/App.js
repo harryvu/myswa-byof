@@ -1,49 +1,46 @@
 import React from "react";
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
+import { loginRequest, msalConfig } from "./authConfig"
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  //NavLink
+  Route
 } from "react-router-dom";
+import Navigation from "./components/Navigation";
 import Home from './components/Home'
 import About from './components/About'
 import Users from './components/Users'
-
 import './App.css';
+import SignInButton from "./components/SignInButton";
 
-let harryProfile = "https://getsecretsfunc.azurewebsites.net/api/profile/1"
+let harryProfile = "https://byofapp.azurewebsites.net/api/profile/1"
 harryProfile = "/api/profile/1"
 
 function App() {
   return (
     <Router>
-        {/* <nav>
-          <ul>
-            <li>
-              <NavLink to="/" exact>Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink to="/users">Users</NavLink>
-            </li>
-          </ul>
-        </nav> */}
+        <UnauthenticatedTemplate>
+          <SignInButton />
+        </UnauthenticatedTemplate>
 
-        {/* A <Switch> looks through its children <Route>s and
+        <Navigation />
+        
+        <AuthenticatedTemplate>
+          {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users url={harryProfile} />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/users">
+              <Users url={harryProfile} />
+            </Route>
+          </Switch>
+        </AuthenticatedTemplate>
+        
 
     </Router>
   );

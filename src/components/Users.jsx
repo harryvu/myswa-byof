@@ -9,7 +9,7 @@ const Users = ({url}) => {
         .then(data => {
             setProfile(data)
         })
-    })
+    },[url])
 
     return (
         <pre>
